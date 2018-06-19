@@ -1,0 +1,21 @@
+query GetLatestTrendingRepositoriesInLastWeek($first: Int, $query: String!, $type: SearchType!) {
+  search(first: $first, query: $query, type: $type) {
+    edges {
+      node {
+        ... on Repository {
+          name
+          owner {
+            login
+          }
+          description
+          stargazers {
+            totalCount
+          }
+          primaryLanguage {
+            name
+          }
+        }
+      }
+    }
+  }
+}
